@@ -4,13 +4,15 @@
 
 The **BCPC Network Infrastructure Project** is a network design and infrastructure simulation developed using Cisco Packet Tracer.
 
-This project demonstrates the implementation of network routing, centralized server services, network monitoring, time synchronization, web hosting, centralized authentication, and secure remote device administration.
+This project demonstrates the implementation of network routing, switching, VLAN segmentation, trunking, centralized server services, network monitoring, time synchronization, web hosting, centralized authentication, and secure remote device administration.
 
-The infrastructure is designed to provide reliable network communication, centralized management, and improved network security.
+The infrastructure is designed to provide reliable network communication, logical network segmentation, centralized management, and improved network security.
 
 ## 🎯 Project Objectives
 
 - Design and simulate a functional network infrastructure.
+- Implement VLANs for logical network segmentation.
+- Configure trunk links for VLAN communication between switches.
 - Implement static routing between different networks.
 - Configure centralized network services.
 - Deploy HTTP, Syslog, and NTP servers.
@@ -20,7 +22,29 @@ The infrastructure is designed to provide reliable network communication, centra
 
 ## 🏗️ Network Infrastructure and Services
 
-### 1. Static Routing
+### 1. VLAN (Virtual Local Area Network)
+
+Implements VLANs to logically segment a switched network into separate broadcast domains.
+
+**Key Functions:**
+- Create and configure VLANs on switches.
+- Assign switch ports to specific VLANs.
+- Separate network devices into logical groups.
+- Improve network organization and traffic isolation.
+- Reduce unnecessary broadcast traffic between VLANs.
+
+### 2. Trunking (IEEE 802.1Q)
+
+Implements trunk links to carry traffic from multiple VLANs across interconnected switches.
+
+**Key Functions:**
+- Configure trunk ports between switches.
+- Implement IEEE 802.1Q VLAN tagging.
+- Allow multiple VLANs to traverse a single physical link.
+- Configure allowed VLANs on trunk connections.
+- Maintain VLAN connectivity across switches.
+
+### 3. Static Routing
 
 Implements manually configured routing entries to enable communication between different networks.
 
@@ -29,8 +53,9 @@ Implements manually configured routing entries to enable communication between d
 - Establish communication between remote networks.
 - Define destination networks and next-hop addresses.
 - Verify routing paths and end-to-end connectivity.
+- Support communication between different network segments.
 
-### 2. HTTP Server (Web Server)
+### 4. HTTP Server (Web Server)
 
 Provides web hosting services within the network, allowing users to access hosted web pages through a browser.
 
@@ -39,7 +64,7 @@ Provides web hosting services within the network, allowing users to access hoste
 - Provide web-based access to network resources.
 - Demonstrate HTTP client-server communication.
 
-### 3. Syslog Server (Network Logging)
+### 5. Syslog Server (Network Logging)
 
 Provides centralized logging by collecting system messages and event notifications from network devices.
 
@@ -49,7 +74,7 @@ Provides centralized logging by collecting system messages and event notificatio
 - Assist in troubleshooting.
 - Maintain centralized network event records.
 
-### 4. NTP Server (Network Time Protocol)
+### 6. NTP Server (Network Time Protocol)
 
 Provides centralized time synchronization for network devices.
 
@@ -59,7 +84,7 @@ Provides centralized time synchronization for network devices.
 - Improve accuracy of network logs.
 - Support network monitoring and troubleshooting.
 
-### 5. RADIUS Server (Remote Authentication Dial-In User Service)
+### 7. RADIUS Server (Remote Authentication Dial-In User Service)
 
 Provides centralized Authentication, Authorization, and Accounting (AAA) services for supported network access devices.
 
@@ -69,7 +94,7 @@ Provides centralized Authentication, Authorization, and Accounting (AAA) service
 - Support centralized access control.
 - Demonstrate AAA implementation.
 
-### 6. TACACS+ Server (Terminal Access Controller Access-Control System Plus)
+### 8. TACACS+ Server (Terminal Access Controller Access-Control System Plus)
 
 Provides centralized AAA services, particularly for administrative access to network devices.
 
@@ -79,7 +104,7 @@ Provides centralized AAA services, particularly for administrative access to net
 - Improve accountability for network administration.
 - Demonstrate centralized device management.
 
-### 7. SSH (Secure Shell)
+### 9. SSH (Secure Shell)
 
 Implements SSH to provide encrypted remote access to network devices, allowing administrators to securely manage and configure routers and switches.
 
@@ -99,6 +124,8 @@ SSH provides a more secure alternative to Telnet by encrypting communication bet
 | Technology | Purpose |
 |---|---|
 | Cisco Packet Tracer | Network simulation |
+| VLAN | Logical network segmentation |
+| IEEE 802.1Q | VLAN trunking |
 | Static Routing | Inter-network communication |
 | SSH | Secure remote administration |
 | HTTP | Web hosting |
@@ -113,7 +140,9 @@ SSH provides a more secure alternative to Telnet by encrypting communication bet
 
 The simulated infrastructure consists of interconnected routers, switches, servers, and client devices.
 
-Static routing enables communication between different network segments, while dedicated servers provide centralized network services.
+VLANs provide logical network segmentation, while trunk links transport multiple VLANs across interconnected switches.
+
+Static routing enables communication between different networks, while dedicated servers provide centralized network services.
 
 SSH provides secure remote administration, and RADIUS and TACACS+ demonstrate centralized authentication and authorization.
 
@@ -133,7 +162,9 @@ SSH provides secure remote administration, and RADIUS and TACACS+ demonstrate ce
 
 The following tests can be performed to verify network functionality:
 
-- **Static Routing:** Verify communication between different networks using ping and routing table inspection.
+- **VLAN:** Verify VLAN creation and port assignments using `show vlan brief`.
+- **Trunking:** Verify trunk interfaces using `show interfaces trunk`.
+- **Static Routing:** Verify routing tables using `show ip route` and test connectivity using ping.
 - **HTTP:** Access the hosted website using a client web browser.
 - **Syslog:** Verify that network device messages are received by the Syslog server.
 - **NTP:** Verify time synchronization on supported network devices.
@@ -143,10 +174,12 @@ The following tests can be performed to verify network functionality:
 
 ## 🔐 Network Security and Management
 
-The project demonstrates centralized authentication, secure remote administration, and network monitoring.
+The project demonstrates network segmentation, centralized authentication, secure remote administration, and network monitoring.
 
 Security and management implementations include:
 
+- VLANs for logical network separation.
+- Trunking for controlled VLAN transport.
 - SSH for encrypted remote device management.
 - RADIUS for centralized authentication.
 - TACACS+ for centralized administrative AAA.
@@ -167,6 +200,8 @@ Security and management implementations include:
 Through this project, the following networking concepts are demonstrated:
 
 - Network infrastructure design.
+- VLAN configuration and network segmentation.
+- Switch trunking and IEEE 802.1Q.
 - Static routing configuration.
 - Server deployment and configuration.
 - Centralized authentication and authorization.
@@ -188,4 +223,4 @@ Through this project, the following networking concepts are demonstrated:
 
 ---
 
-*This project was developed for educational purposes to demonstrate practical networking, routing, server infrastructure, centralized authentication, and network management concepts.*
+*This project was developed for educational purposes to demonstrate practical networking, switching, routing, server infrastructure, centralized authentication, and network management concepts.*
