@@ -119,7 +119,7 @@ SSH provides secure remote administration, and RADIUS and TACACS+ demonstrate ce
 
 ### Network Topology
 
-![BCPC Network Topology](topology.png)
+![BCPC Network Topology](BCPCNetworkTopology.png)
 
 ## 📂 Project Files
 
